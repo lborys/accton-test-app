@@ -3,7 +3,7 @@
     <input
       type="text"
       v-model="search"
-      placeholder="Search..."
+      placeholder="Enter text"
       class="search-input"
     />
 
@@ -13,7 +13,7 @@
         :key="id"
         class="tag"
       >
-        {{ flatNodeMap[id]?.name || 'Unknown' }}
+        {{ searchResults[id]?.name || 'Unknown' }}
         <button @click="remove(id)">×</button>
       </div>
     </div>
@@ -44,18 +44,18 @@ const props = defineProps({
 
 const search = ref('')
 const selected = ref([])
-const flatNodeMap = ref({})
+const searchResults = ref({})
 
-const buildFlatNodeMap = (nodes) => {
+onMounted(() => buildSearchResults(props.data))
+
+const buildSearchResults = (nodes) => {
   for (const node of nodes) {
-    flatNodeMap.value[node.id] = node
+    searchResults.value[node.id] = node
     if (node.children?.length) {
-      buildFlatNodeMap(node.children)
+      buildSearchResults(node.children)
     }
   }
 }
-
-onMounted(() => buildFlatNodeMap(props.data))
 
 const filteredData = computed(() => {
   if (!search.value.trim()) return props.data
@@ -91,7 +91,7 @@ const handleToggle = (id, childrenIds, isChecked) => {
 }
 
 const remove = (id) => {
-  selected.value = selected.value.filter((s) => s !== id)
+  selected.value = selected.value.filter((item) => item !== id)
 }
 
 const formattedOutput = computed(() => {
