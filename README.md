@@ -12,8 +12,8 @@
 
 Клонуй репозиторій і зайди в папку:
 
-git clone https://github.com/lborys/accton-test-task.git
-cd accton-test-task
+git clone https://github.com/lborys/accton-test-app.git
+cd accton-test-app
 
 1. Встановити залежності: npm install
 
