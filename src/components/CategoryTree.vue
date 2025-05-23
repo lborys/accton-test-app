@@ -28,7 +28,7 @@
       />
     </div>
 
-    <pre v-if="formattedOutput.length" class="output-json">
+    <pre v-if="formattedOutput.length" class="output">
       {{ formattedOutput }}
     </pre>
   </div>
@@ -125,9 +125,8 @@ const formattedOutput = computed(() => {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  height: 40px; /* фіксована висота */
+  height: 40px;
   box-sizing: border-box;
-  /* Приберемо вертикальне центрування */
   line-height: normal;
 }
 
@@ -135,9 +134,8 @@ const formattedOutput = computed(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  min-height: 36px; /* фіксована мінімальна висота */
+  min-height: 36px;
   align-items: flex-start;
-  /* Приберемо вертикальне центрування */
 }
 
 .tag {
@@ -147,7 +145,7 @@ const formattedOutput = computed(() => {
   display: flex;
   align-items: center;
   gap: 4px;
-  height: 28px; /* фіксована висота */
+  height: 28px;
 }
 
 .tag button {
@@ -163,11 +161,10 @@ const formattedOutput = computed(() => {
   padding: 8px;
   border-radius: 4px;
   min-height: 100px;
-  /* зафіксувати ширину, щоб не "стрибає" */
   width: 100%;
 }
 
-.output-json {
+.output {
   margin-top: 8px;
   background: #f9f9f9;
   padding: 12px;
